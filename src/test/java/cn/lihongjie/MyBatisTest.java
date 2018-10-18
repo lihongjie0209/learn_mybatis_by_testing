@@ -1,10 +1,13 @@
 package cn.lihongjie;
 
+import cn.lihongjie.dao.EmployeeDao;
+import cn.lihongjie.entity.EmployeeEntity;
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 import org.junit.After;
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -43,10 +46,23 @@ public class MyBatisTest {
 
 		SqlSession sqlSession = sqlSessionFactory.openSession();
 
-		// sql id
-		// sql param
-//		sqlSession.selectOne()
+		sqlSession.close();
 
+	}
+
+
+	@Test
+	public void testAnnotationMapper() throws Exception {
+
+
+		SqlSession sqlSession = sqlSessionFactory.openSession();
+
+		EmployeeDao mapper = sqlSession.getMapper(EmployeeDao.class);
+		EmployeeEntity employeeEntity = mapper.get(1L);
+
+		sqlSession.close();
+
+		Assert.assertNull(employeeEntity);
 
 	}
 }

@@ -40,7 +40,10 @@
         </environment>
     </environments>
 
-    <!--<mappers>-->
-    <!--<mapper resource="org/mybatis/example/BlogMapper.xml"/>-->
-    <!--</mappers>-->
+    <mappers>
+        <!-- 基于注解的 -->
+        <!--<mapper class="cn.lihongjie.dao.EmployeeDao"/>-->
+        <!--批量注册-->
+        <package name="cn.lihongjie.dao"/>
+    </mappers>
 </configuration>
